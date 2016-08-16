@@ -1,2 +1,1 @@
-# podcasts
-MSc Podcasts Assignment Code
+# MSc Assignment Code
