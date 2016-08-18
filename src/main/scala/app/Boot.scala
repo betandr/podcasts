@@ -1,5 +1,6 @@
 package app
 
 object Boot extends App {
-  println("starting...")
+  val dataSync = system.actorOf(Props[DataSyncActor], "data-sync")
+  dataSync ! "start"
 }

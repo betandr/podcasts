@@ -9,13 +9,15 @@ class Service extends Actor {
   val routes = 
     path("podcasts" / pid ~ ".json") { pid =>
       get {
-        respondWithMediaType(`application/json`) {
-          PodcastsOrchestrator
+          PodcastsOrchestrator.podcast(pid)
         }
       }
     } ~ path("podcasts.json") {
-        respondWithMediaType(`application/json`) {
+      get {
+        parameters('pids.as[String] ) { (pids) =>
+          PodcastsOrchestrator.podcasts(pids)
         }
+      }
     }
 
   def receive: Receive = runRoute(routes)
